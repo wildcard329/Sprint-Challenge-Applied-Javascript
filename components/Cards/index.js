@@ -21,7 +21,7 @@
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response => {
   console.log(response)
-    entryPoint.append(cardMaker(response.data))
+    // entryPoint.append(cardMaker(response.data))
 })
 .catch(error => {
   console.log('The data was not returned', error)
