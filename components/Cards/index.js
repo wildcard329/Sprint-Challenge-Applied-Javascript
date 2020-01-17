@@ -47,6 +47,11 @@ function cardMaker (lUrl) {
     newAuthor.classList.add('author');
     imgCont.classList.add('img-container');
 
-    headLine.textContent = 'lUrl.data.articles.javascrpt.headline[0]'
-    newAuthor.src = 'lUrl.data.articles.javascript.'
+    // headLine.textContent = 'lUrl.data.articles.javascrpt.headline[0]'
+    // newAuthor.src = 'lUrl.data.articles.javascript.'
+
+    lUrl.data.articles.array.forEach(element => {
+        // headLine.textContent.add(element);
+        articlesArray += element;
+    });
 }

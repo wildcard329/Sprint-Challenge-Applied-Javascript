@@ -10,16 +10,22 @@
 // And add it to the DOM in the .header-container component
 
 function Header() {
-    const newHeader = document.createElement('div'),
-            newDate = document.createElement('span'),
-            newTitle = document.createElement('h1'),
-            newTemp = document.createElement('span')
+    const newsHeader = document.createElement('div'),
+            newsDate = document.createElement('span'),
+            newsTitle = document.createElement('h1'),
+            newsTemp = document.createElement('span')
 
-    newHeader.append(newDate);
-    newHeader.append(newTitle);
-    newHeader.append(newTemp);
+    newsHeader.append(newDate);
+    newsHeader.append(newTitle);
+    newsHeader.append(newTemp);
 
-    newHeader.classList.add('header');
-    newDate.classList.add('date');
-    newTemp.classList.add('temp');
+    newsHeader.classList.add('header');
+    newsDate.classList.add('date');
+    newsTemp.classList.add('temp');
+
+    newsDate.textContent.add('SMARCH 28, 2019');
+    newsTitle.textContent.add('Lambda Times');
+    newsTemp.textContent.add('98°')
+
+    return newsHeader;
 }
