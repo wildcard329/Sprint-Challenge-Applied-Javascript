@@ -20,7 +20,8 @@
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response => {
-  console.log(response)
+  console.log(response.data.articles)
+
     // entryPoint.append(cardMaker(response.data))
 })
 .catch(error => {
@@ -45,4 +46,7 @@ function cardMaker (lUrl) {
     headLine.classList.add('headline');
     newAuthor.classList.add('author');
     imgCont.classList.add('img-container');
+
+    headLine.textContent = 'lUrl.data.articles.javascrpt.headline[0]'
+    newAuthor.src = 'lUrl.data.articles.javascript.'
 }
