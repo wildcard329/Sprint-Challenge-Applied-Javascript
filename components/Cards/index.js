@@ -1,57 +1,41 @@
-// STEP 3: Create Article cards.
-// -----------------------
-// Send an HTTP GET request to the following address: https://lambda-times-backend.herokuapp.com/articles
-// Stduy the response data you get back, closely.
-// You will be creating a component for each 'article' in the list.
-// This won't be as easy as just iterating over an array though.
-// Create a function that will programmatically create the following DOM component:
-//
-// <div class="card">
-//   <div class="headline">{Headline of article}</div>
-//   <div class="author">
-//     <div class="img-container">
-//       <img src={url of authors image} />
-//     </div>
-//     <span>By {authors name}</span>
-//   </div>
-// </div>
-//
-// Create a card for each of the articles and add the card to the DOM.
+const cardContainer = document.querySelector('.cards-container')
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then(response => {
-  console.log(response.data.articles)
-
-    // entryPoint.append(cardMaker(response.data))
+  console.log('I am a axios call from the cards', response.data.articles)
+  Object.values(response.data.articles).forEach(elements => {
+    elements.forEach(element => {
+      cardContainer.append(createCards(element))
+    })
+  });
 })
 .catch(error => {
-  console.log('The data was not returned', error)
+  console.log('error')
 })
 
-function cardMaker (lUrl) {
-    const newCard = document.createElement('div'),
-            headLine = document.createElement('div'),
-            newAuthor = document.createElement('div'),
-            imgCont = document.createElement('div'),
-            imgSRC = document.createElement('img'),
-            byName = document.createElement('span')
+function createCards(obj){
+  const newCard = document.createElement('div'),
+        newHead = document.createElement('div'),
+        newAuth = document.createElement('div'),
+        newImgC = document.createElement('div'),
+        newImag = document.createElement('img'),
+        newName = document.createElement('span')
 
-    newCard.append(headLine);
-    newCard.append(newAuthor);
-    newAuthor.append(imgCont);
-    newAuthor.append(byName);
-    imgCont.append(imgSRC);
+  newCard.classList.add('card');
+  newHead.classList.add('headline');
+  newAuth.classList.add('author');
+  newImag.classList.add('img-container');
 
-    newCard.classList.add('card');
-    headLine.classList.add('headline');
-    newAuthor.classList.add('author');
-    imgCont.classList.add('img-container');
+  newHead.textContent = obj.headline;
+  newImag.setAttribute('src', obj.authorPhoto);
+  newName.textContent = obj.authorName;
 
-    // headLine.textContent = 'lUrl.data.articles.javascrpt.headline[0]'
-    // newAuthor.src = 'lUrl.data.articles.javascript.'
+  newCard.append(newHead);
+  newCard.append(newAuth);
+  newAuth.append(newImgC);
+  newAuth.append(newName);
+  newImgC.append(newImag);
 
-    lUrl.data.articles.array.forEach(element => {
-        // headLine.textContent.add(element);
-        articlesArray += element;
-    });
+  return newCard;
+        
 }
