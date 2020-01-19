@@ -8,27 +8,29 @@
 //    <span class="temp">98°</span>
 //  </div >
 // And add it to the DOM in the .header-container component
-const headerContainer = document.querySelector('header-container')
+const headerContainer = document.querySelector('.header-container')
+const headerItems = [{date: 'SMARCH 28, 2019', title: 'Lambda Times', temp: '98°'}]
 
-function makeHeader() {
-    const newsHeader = document.createElement('div'),
-            newsDate = document.createElement('span'),
-            newsTitle = document.createElement('h1'),
-            newsTemp = document.createElement('span')
+function makeHeader(date, title, temp) {
+    const mainHeader = document.createElement('div'),
+        newsDate = document.createElement('span'),
+        newsTitle = document.createElement('h1'),
+        newsTemp = document.createElement('span')
 
-    newsHeader.append(newDate);
-    newsHeader.append(newTitle);
-    newsHeader.append(newTemp);
-
-    newsHeader.classList.add('header');
+    mainHeader.classList.add('header');
     newsDate.classList.add('date');
     newsTemp.classList.add('temp');
 
-    newsDate.textContent.add('SMARCH 28, 2019');
-    newsTitle.textContent.add('Lambda Times');
-    newsTemp.textContent.add('98°')
+    newsDate.textContent = date;
+    newsTitle.textContent = title;
+    newsTemp.textContent = temp;
+    
+    mainHeader.append(newsDate);
+    mainHeader.append(newsTitle);
+    mainHeader.append(newsTemp);
 
-    return newsHeader;
+    return mainHeader;
 }
-
-headerContainer.append(newsHeader)
+headerItems.forEach(data =>{
+    headerContainer.append(makeHeader(data.date, data.title, data.temp))
+})
