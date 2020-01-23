@@ -9,7 +9,7 @@
 //  </div >
 // And add it to the DOM in the .header-container component
 const headerContainer = document.querySelector('.header-container')
-const headerItems = [{date: 'SMARCH 28, 2019', title: 'Lambda Times', temp: '98°'}]
+const headerItem = {date: 'SMARCH 28, 2019', title: 'Lambda Times', temp: '98°'}
 
 function makeHeader(date, title, temp) {
     const mainHeader = document.createElement('div'),
@@ -31,6 +31,9 @@ function makeHeader(date, title, temp) {
 
     return mainHeader;
 }
-headerItems.forEach(data =>{
-    headerContainer.append(makeHeader(data.date, data.title, data.temp))
-})
+
+headerContainer.append(makeHeader(
+    headerItem.date, 
+    headerItem.title, 
+    headerItem.temp
+));
